@@ -1,23 +1,30 @@
 extends layout
-
+//- The index site for the chatserver, just using waht boostrap provides,
+//- because i dont know shit about .css :P
 block body
-  div(ng-controller='AppCtrl')
-    h2 Hello {{name}}
-    ul.menu
-      li
-        a(href='view1') view1
-      li
-        a(href='view2') view2
+    .container(ng-controller="AppCtrl")
+        .row-fluid
+            .span10
+                h3 Messages
+                    .well.message-spot
+                        p(ng-repeat="mesagge in messages", ng-class="message.me",
+                            class="") {{message.user}}: {{message.text}}
 
-    div(ng-view)
 
-    div
-      | Angular seed app: v
-      span(app-version)
+                .navbar.navbar-inverse.navbar-fixed-bottom.bar-submit-message
+                    .navbar-inner
+                    .container
+                        form(ng-submit="sendMessage()", class="well form-search form-send-message")
+                            input(ng-model="message", class="span9 input-message", placeholder="Y U No Chat?")
+                            input(type="submit", value="send", class="btn btn-succes")
 
-  script(src='js/lib/angular/angular.js')
-  script(src='js/app.js')
-  script(src='js/services.js')
-  script(src='js/controllers.js')
-  script(src='js/filters.js')
-  script(src='js/directives.js')
+                .span2
+                    h3 Users
+                        .well
+                            ul.nav.nav-list
+                                li(ng-repeat="user in chatroomUsers") {{user}}
+                                    
+
+
+
+  

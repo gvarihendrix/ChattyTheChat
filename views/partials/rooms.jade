@@ -1,0 +1,8 @@
+h2 Available Chat rooms
+ul
+    li(ng-repaet="(index, room) in rooms")
+        a(href="/room/{{index}}") {{room.name}}
+
+form(ng-submit="newChatRoom()")
+    input(ng-model="roomName", placeholder="You wanna create a new chatroom")
+    input(type="submit", value="Create new Chatroom")

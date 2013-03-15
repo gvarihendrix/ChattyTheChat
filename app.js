@@ -28,10 +28,11 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
-// Routes
+// Routes hello
 
 app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
+app.get('/about', routes.about);
 
 // JSON API
 
