@@ -3,7 +3,7 @@
  * GET home page.
  */
 
-exports.index = function(req, res){
+exports.index = function(req, res) {
   res.render('index');
 };
 
@@ -15,10 +15,19 @@ exports.partials = function (req, res) {
 
 
 /**
- * Get about page
+ * GET about page
  */
 
-exports.about = function (req, res){
+exports.about = function (req, res) { 
     console.log(req);
     res.render('about');
+};
+
+
+/**
+ * GET login page
+ */
+
+exports.login = function(req, res) {
+    res.render('login');
 };
