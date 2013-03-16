@@ -18,7 +18,7 @@ exports.partials = function (req, res) {
  * GET about page
  */
 
-exports.about = function (req, res) { 
+exports.about = function (req, res) {
     console.log(req);
     res.render('about');
 };
