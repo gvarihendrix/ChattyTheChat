@@ -12,7 +12,7 @@ html(ng-app="myApp")
         }
     link(rel="stylesheet", type="text/css", href="/css/bootstrap-responsive.min.css")
   //- The setup for the layout, just a basic starter template from bootstrap
-  body(ng-init="load()")
+  body(ng-controller="AppCtrl")
     .navbar.navbar-inverse.navbar-fixed-top
         .navbar-inner
             .container
@@ -28,6 +28,10 @@ html(ng-app="myApp")
                     ul.nav.pull-right
                         li
                             a(href="about") About
+                        li 
+                            a(href="logout") Logout
+
+    
     block body
     script(type="text/javascript", src="js/lib/jquery-1.9.1.js")
     script(type="text/javascript", src="js/lib/bootstrap.js")

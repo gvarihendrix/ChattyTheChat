@@ -28,6 +28,6 @@ exports.about = function (req, res) {
  * GET login page
  */
 
-exports.login = function(req, res) {
+exports.login = function (req, res) {
     res.render('login');
 };

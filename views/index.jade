@@ -2,29 +2,35 @@ extends layout
 //- The index site for the chatserver, just using waht boostrap provides,
 //- because i dont know shit about .css :P
 block body
-    .container(ng-controller="AppCtrl")
+    .container
         .row-fluid
-            .span10
+            .span11
                 h3 Messages
                     .well.message-spot
-                        p(ng-repeat="mesagge in messages", ng-class="message.me",
+                        p(ng-repeat="message in messages", ng-class="message",
                             class="") {{message.user}}: {{message.text}}
 
 
                 .navbar.navbar-inverse.navbar-fixed-bottom.bar-submit-message
                     .navbar-inner
                     .container
-                        form(ng-submit="sendMessage()", class="well form-search form-send-message")
+                        form(ng-submit="sendMessage()", class="well form-horizontal form-send-message")
                             input(ng-model="message", class="span9 input-message", placeholder="Y U No Chat?")
-                            input(type="submit", value="send", class="btn btn-succes")
+                            input(type="submit", value="send", class="btn")
 
-                .span2
+                .span5
                     h3 Users
                         .well
                             ul.nav.nav-list
-                                li(ng-repeat="user in chatroomUsers") {{user}}
+                                li(ng-repeat="user in users") {{ user }}
                                     
+        .crl
+            h3 Change your username
+            p Your current name is {{name}}
+            form(ng-submit="changeName()", class="form-horizontal")
+                input(ng-model="newName")
+                input(type="submit", value="Change Name", class="btn") Change Name
 
-
+     
 
   
