@@ -1,36 +1,31 @@
 extends layout
-//- The index site for the chatserver, just using waht boostrap provides,
-//- because i dont know shit about .css :P
+
 block body
-    .container
-        .row-fluid
-            .span11
-                h3 Messages
-                    .well.message-spot
-                        p(ng-repeat="message in messages", ng-class="message",
-                            class="") {{message.user}}: {{message.text}}
+  div(ng-controller='AppCtrl')
+    tabs
+        pane(heading='Chat')
+          h3 Welcome {{name}}!
+        pane(ng-repeat='channel in channels', heading='{{channel.name}}', active='channel.active')
+          h3 {{channel.name}}
+            button(class='btn', ng-click="closeRoom([$index])")
+              i(class='icon-remove')
+              | Close
+          div
+            ul
+              li(ng-repeat='message in channel.messages') [{{message.time | date:"H:mm:ss"}}] <{{message.user}}> {{message.text}}
+          form(class='form-horizontal')
+            //style='width: 100%; box-sizing: border-box; height: 28px; '
+            input(type="text", ng-model="channels[$index].postText")
+            button(class="btn", ng-click="sendMessage([$index])")
+              i(class="icon-plus")
+              | Send
 
 
-                .navbar.navbar-inverse.navbar-fixed-bottom.bar-submit-message
-                    .navbar-inner
-                    .container
-                        form(ng-submit="sendMessage()", class="well form-horizontal form-send-message")
-                            input(ng-model="message", class="span9 input-message", placeholder="Y U No Chat?")
-                            input(type="submit", value="send", class="btn")
-
-                .span5
-                    h3 Users
-                        .well
-                            ul.nav.nav-list
-                                li(ng-repeat="user in users") {{ user }}
-                                    
-        .crl
-            h3 Change your username
-            p Your current name is {{name}}
-            form(ng-submit="changeName()", class="form-horizontal")
-                input(ng-model="newName")
-                input(type="submit", value="Change Name", class="btn") Change Name
-
-     
-
-  
+  script(src='js/lib/angular/angular.js')
+  script(src='/socket.io/socket.io.js')
+  script(src='js/app.js')
+  script(src='js/services.js')
+  script(src='js/controllers.js')
+  script(src='js/filters.js')
+  script(src='js/directives.js')
+  script(src='js/ui-bootstrap-tpls-0.2.0.min.js')

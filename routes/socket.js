@@ -37,9 +37,12 @@ module.exports = function (socket) {
 
     // On message sent we broadcast it to the other clients
     socket.on('send:message', function (data) {
+        console.log(data);
         socket.broadcast.emit('send:message', {
+            time: Date.now(),
             user: name,
-            text: data.message
+            roomId: data.roomId,
+            text: data.message,
         });
     });
 
